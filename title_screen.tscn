@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://pcvxd5ug1puh"]
+
+[ext_resource type="Texture2D" uid="uid://dujygj5lt2kgt" path="res://texture/farm_soil_2k.gltf/textures/farm_soil_diff_2k.jpg" id="1_v6p8y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ak2if"]
+noise_type = 3
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v6p8y"]
+noise = SubResource("FastNoiseLite_ak2if")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig5kc"]
+sky_top_color = Color(0.019607844, 0.019607844, 0.0627451, 1)
+sky_horizon_color = Color(0.043137256, 0.05490196, 0.1254902, 1)
+sky_cover = SubResource("NoiseTexture2D_v6p8y")
+sky_cover_modulate = Color(0.3730973, 0.34254798, 0.35273865, 1)
+ground_bottom_color = Color(0.21084577, 0.17711505, 0.14339831, 1)
+ground_horizon_color = Color(0.13232207, 0.1358251, 0.14283949, 1)
+
+[sub_resource type="Sky" id="Sky_v6p8y"]
+sky_material = SubResource("ProceduralSkyMaterial_ig5kc")
+
+[sub_resource type="Environment" id="Environment_ak2if"]
+background_mode = 2
+sky = SubResource("Sky_v6p8y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6aki"]
+bg_color = Color(0.25490198, 0.25490198, 0.25490198, 0.6431373)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6p8y"]
+bg_color = Color(0.25490198, 0.25490198, 0.25490198, 0.6431373)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s85s"]
+bg_color = Color(0.42237097, 0.42237106, 0.4223709, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak2if"]
+albedo_texture = ExtResource("1_v6p8y")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k6aki"]
+material = SubResource("StandardMaterial3D_ak2if")
+size = Vector2(50, 50)
+
+[node name="TitleScreen" type="Node3D" unique_id=1482620287]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=14311807]
+environment = SubResource("Environment_ak2if")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=423586018]
+transform = Transform3D(-0.1279831, -0.9302443, 0.34389782, -0.23273818, 0.3652368, 0.90135175, -0.96408147, 0.035319656, -0.26324755, 33.812805, 11.1903, -21.446371)
+shadow_enabled = true
+
+[node name="Button" type="Node3D" parent="." unique_id=1689969976]
+
+[node name="Button" type="Button" parent="Button" unique_id=1548511223]
+offset_left = 60.0
+offset_top = 425.0
+offset_right = 228.0
+offset_bottom = 479.0
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6aki")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v6p8y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1s85s")
+text = "Start
+"
+
+[node name="Button2" type="Button" parent="Button" unique_id=301598514]
+offset_left = 59.0
+offset_top = 491.0
+offset_right = 227.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6aki")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v6p8y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1s85s")
+text = "Load"
+
+[node name="Button3" type="Button" parent="Button" unique_id=341305819]
+offset_left = 60.0
+offset_top = 554.0
+offset_right = 228.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6aki")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v6p8y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1s85s")
+text = "Quit"
+
+[node name="Latar" type="Node3D" parent="." unique_id=527948065]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Latar" unique_id=1616743256]
+mesh = SubResource("PlaneMesh_k6aki")
+
+[node name="Camera3D" type="Camera3D" parent="Latar" unique_id=225276213]
+transform = Transform3D(1, 0, 0, 0, 0.9984938, -0.054864977, 0, 0.054864977, 0.9984938, 0, 0.9426055, 17.583681)
